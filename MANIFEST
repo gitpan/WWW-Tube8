@@ -1,0 +1,9 @@
+Build.PL
+Changes
+MANIFEST
+Makefile.PL
+README
+lib/WWW/Tube8.pm
+t/00.load.t
+t/01.basic.t
+META.yml
