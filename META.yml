@@ -1,6 +1,6 @@
 ---
 name: WWW-Tube8
-version: 0.0.3
+version: 0.0.4
 author:
   - 'Dai Okabayashi <bayashi@cpan.org>'
 abstract: Get video informations from tube8.com
@@ -15,7 +15,7 @@ requires:
 provides:
   WWW::Tube8:
     file: lib/WWW/Tube8.pm
-    version: 0.0.3
+    version: 0.0.4
 generated_by: Module::Build version 0.3
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
