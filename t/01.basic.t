@@ -10,7 +10,7 @@ my $res = $ua->get("http://www.tube8.com/");
 my $online = $res->is_success;
 
 if($online){
-    plan tests => 16;
+    plan tests => 17;
 }else{
     plan skip_all => ": you're offline or tube8.com is down, so skiped all tests.";
 }
@@ -77,6 +77,10 @@ if($online){
        'category_url : get category link of video';
 
     is $t8->duration, '23:00', 'duration : get duration of video';
+
+    is ref $t8->related_videos,
+       'ARRAY',
+       'related_videos : get related videos list';
 
     # rewrite url for test
     $t8->url('http://www.example.com/test/hoge-hage-foo-bar/77777/');

@@ -1,5 +1,8 @@
 Revision history for WWW-Tube8
 
+1.0.0  Sun Jan 18 13:20:00 2009
+       change accessor. and add related_videos method.
+
 0.0.4  Mon Jan 14 12:00:00 2009
        fixed test(01.basic.t)
 

@@ -1,6 +1,6 @@
 ---
 name: WWW-Tube8
-version: 0.0.4
+version: 1.0.0
 author:
   - 'Dai Okabayashi <bayashi@cpan.org>'
 abstract: Get video informations from tube8.com
@@ -9,13 +9,14 @@ resources:
   license: http://dev.perl.org/licenses/
 requires:
   Carp: 0
-  Class::Accessor: 0
+  Class::Accessor::Fast: 0
   LWP::UserAgent: 0
   Test::More: 0
+  version: 0
 provides:
   WWW::Tube8:
     file: lib/WWW/Tube8.pm
-    version: 0.0.4
+    version: 1.0.0
 generated_by: Module::Build version 0.3
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

@@ -4,13 +4,15 @@ use warnings;
 use strict;
 use Carp qw( croak );
 
-use version; our $VERSION = qv('0.0.4');
+use version; our $VERSION = qv('1.0.0');
 
 use LWP::UserAgent;
 
-use base qw(Class::Accessor);
+use base qw(Class::Accessor::Fast);
 __PACKAGE__->mk_accessors(
-    qw( flv thumb get_3gp url id title title_inurl category category_url duration )
+    qw( flv thumb get_3gp
+        url id title title_inurl
+        category category_url duration related_videos )
 );
 
 sub new {
@@ -59,6 +61,21 @@ sub _get_info {
         =~ /<strong>Category<\/strong>: <a href='([^']+)'><b>([^<]+)<\/b><\/a>/;
     $self->category_url($1);
     $self->category($2);
+    $self->_get_related($tube8_page);
+}
+
+sub _get_related {
+    my $self       = shift;
+    my $tube8_page = shift;
+
+    my @related_videos;
+    while ( $tube8_page
+        =~ s!<a href="([^"]+)"><span class="VideoTitles">([^<]+)</span></a>!!
+        )
+    {
+        push @related_videos, { url => $1, title => $2, };
+    }
+    $self->set('related_videos', @related_videos);
 }
 
 1;
@@ -95,6 +112,9 @@ WWW::Tube8 - Get video informations from tube8.com
     print $t8->category     . "\n";
     print $t8->category_url . "\n";
     print $t8->duration     . "\n";
+    for my $rv ( @{ $t8->related_videos } ) {
+        print "$rv->{title}\t$rv->{url}\n";
+    }
 
 
 =head1 METHOD
@@ -104,10 +124,8 @@ WWW::Tube8 - Get video informations from tube8.com
 =item new(I<$hash_ref>)
 
 Creates a new WWW::Tube8 instance.
-required param only url.
-
-
-you can get video infomations like follow
+required param is url only.
+you can get video infomations like follow.
 
 =item flv
 
@@ -128,6 +146,8 @@ you can get video infomations like follow
 =item category_url
 
 =item duration
+
+=item related_videos
 
 =back
 
