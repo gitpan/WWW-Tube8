@@ -38,7 +38,7 @@ if($online){
 
 {
     my $t8 = WWW::Tube8->new({
-        url => 'http://www.tube8.com/asian/japanese-av-haruka-sanada/71930/',
+        url => 'http://www.tube8.com/asian/japan-av-you/62653/',
         ua  => $ua,
     });
 
@@ -51,7 +51,7 @@ if($online){
          'flv : get url of flv file';
 
     like $t8->thumb,
-       qr/http:\/\/www\.tube8\.com\/.+\/71930\.jpg/,
+       qr/http:\/\/www\.tube8\.com\/.+\/62653\.jpg/,
        'thumb : get url of thumbnail file';
 
     like $t8->get_3gp,
@@ -59,15 +59,15 @@ if($online){
          'get_3gp : get url of 3gp file';
 
     is $t8->url,
-       'http://www.tube8.com/asian/japanese-av-haruka-sanada/71930/',
+       'http://www.tube8.com/asian/japan-av-you/62653/',
        'url : get url of video';
 
-    is $t8->id, '71930', 'id : get id of video';
+    is $t8->id, '62653', 'id : get id of video';
 
-    is $t8->title, 'Japanese AV Haruka Sanada', 'title : get title of video';
+    is $t8->title, 'Japan AV @You', 'title : get title of video';
 
     is $t8->title_inurl,
-       'japanese-av-haruka-sanada',
+       'japan-av-you',
        'title_inurl : get title of video for url';
 
     is $t8->category, 'Asian', 'category : get category of video';
@@ -76,7 +76,7 @@ if($online){
        'http://www.tube8.com/cat/asian/12/',
        'category_url : get category link of video';
 
-    is $t8->duration, '23:00', 'duration : get duration of video';
+    is $t8->duration, '39:59', 'duration : get duration of video';
 
     is ref $t8->related_videos,
        'ARRAY',
