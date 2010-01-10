@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Carp qw( croak );
 
-use version; our $VERSION = qv('1.0.1');
+use version; our $VERSION = qv('1.1.0');
 
 use LWP::UserAgent;
 
@@ -42,7 +42,7 @@ sub _get_info {
     my $tube8_page = $res->content;
 
     while ( $tube8_page
-        =~ s/so\.addVariable\('(videoUrl|imageUrl)','([^']+\.(?:flv|jpg))'\);//
+        =~ s/flashvars\.(videoUrl|imageUrl) = '([^']+\.(?:flv|jpg))'//
         )
     {
         my ( $key, $value ) = ( $1, $2 );
@@ -54,11 +54,11 @@ sub _get_info {
         }
     }
     $self->get_3gp(
-        $tube8_page =~ /<a href="([^"]+\.3gp)">Download video for mobile/ );
-    $self->title( $tube8_page    =~ /<strong>Title<\/strong>: ([^<]+)/ );
-    $self->duration( $tube8_page =~ /<strong>Duration<\/strong>: ([^<]+)/ );
+        $tube8_page =~ /<a href="([^"]+\.3gp)"/ );
+    $self->title( $tube8_page    =~ /<h1 class="main-title main-sprite-img">([^<]+)<\/h1>/ );
+    $self->duration( $tube8_page =~ /<strong>Duration: <\/strong>([^<]+)/ );
     $tube8_page
-        =~ /<strong>Category<\/strong>: <a href='([^']+)'><b>([^<]+)<\/b><\/a>/;
+        =~ /<strong>Category: <\/strong><a href='([^']+)'>([^<]+)<\/a>/;
     $self->category_url($1);
     $self->category($2);
     $self->_get_related($tube8_page);
@@ -70,7 +70,7 @@ sub _get_related {
 
     my @related_videos;
     while ( $tube8_page
-        =~ s!<a href="([^"]+)"><span class="VideoTitles">([^<]+)</span></a>!!
+        =~ s!<h2><a href="([^"]+)" title="([^"]+)">.+</a></h2>!!
         )
     {
         push @related_videos, { url => $1, title => $2, };
