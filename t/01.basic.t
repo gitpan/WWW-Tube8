@@ -51,7 +51,7 @@ if($online){
          'flv : get url of flv file';
 
     like $t8->thumb,
-       qr/http:\/\/www\.tube8\.com\/.+\/62653\.jpg/,
+       qr/http:\/\/www\.tube8\.com\/.+\.jpg/,
        'thumb : get url of thumbnail file';
 
     like $t8->get_3gp,

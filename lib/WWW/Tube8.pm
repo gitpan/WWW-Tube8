@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Carp qw( croak );
 
-use version; our $VERSION = qv('1.1.0');
+use version; our $VERSION = qv('1.1.1');
 
 use LWP::UserAgent;
 
