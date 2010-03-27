@@ -47,15 +47,15 @@ if($online){
     is $t8->{ua}->agent, 'WWW::Tube8.test', 'new : agent';
 
     like $t8->flv,
-         qr/http:\/\/[^\.]+\.tube8\.com\/flv\/.+\.flv/,
+         qr/^http:\/\/.+\.tube8\.com\/flv\/.+\.flv/,
          'flv : get url of flv file';
 
     like $t8->thumb,
-       qr/http:\/\/www\.tube8\.com\/.+\.jpg/,
+       qr/^http:\/\/www\.tube8\.com\/.+\.jpg/,
        'thumb : get url of thumbnail file';
 
     like $t8->get_3gp,
-         qr/http:\/\/[^\.]+\.tube8\.com\/flv\/.+\.3gp/,
+         qr/^http:\/\/.+\.tube8\.com\/flv\/.+\.3gp/,
          'get_3gp : get url of 3gp file';
 
     is $t8->url,

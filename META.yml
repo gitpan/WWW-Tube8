@@ -13,7 +13,7 @@ name: WWW-Tube8
 provides:
   WWW::Tube8:
     file: lib/WWW/Tube8.pm
-    version: v1.1.1
+    version: v1.1.2
 requires:
   Carp: 0
   Class::Accessor::Fast: 0
@@ -22,4 +22,4 @@ requires:
   version: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: v1.1.1
+version: v1.1.2
