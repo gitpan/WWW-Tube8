@@ -38,7 +38,7 @@ if($online){
 
 {
     my $t8 = WWW::Tube8->new({
-        url => 'http://www.tube8.com/asian/japan-av-you/62653/',
+        url => 'http://www.tube8.com/blowjob/saki-ninomiya/228561/',
         ua  => $ua,
     });
 
@@ -59,24 +59,24 @@ if($online){
          'get_3gp : get url of 3gp file';
 
     is $t8->url,
-       'http://www.tube8.com/asian/japan-av-you/62653/',
+       'http://www.tube8.com/blowjob/saki-ninomiya/228561/',
        'url : get url of video';
 
-    is $t8->id, '62653', 'id : get id of video';
+    is $t8->id, '228561', 'id : get id of video';
 
-    is $t8->title, 'Japan AV @You', 'title : get title of video';
+    is $t8->title, 'saki ninomiya', 'title : get title of video';
 
     is $t8->title_inurl,
-       'japan-av-you',
+       'saki-ninomiya',
        'title_inurl : get title of video for url';
 
-    is $t8->category, 'Asian', 'category : get category of video';
+    is $t8->category, 'Blowjob', 'category : get category of video';
 
     is $t8->category_url,
-       'http://www.tube8.com/cat/asian/12/',
+       'http://www.tube8.com/cat/blowjob/7/',
        'category_url : get category link of video';
 
-    is $t8->duration, '39:59', 'duration : get duration of video';
+    is $t8->duration, '06:58', 'duration : get duration of video';
 
     is ref $t8->related_videos,
        'ARRAY',
